@@ -14,13 +14,7 @@ class Program
             {
                 Console.Write($"Group {row + 1}, student {column + 1}: ");
                 grades[row, column] = Convert.ToInt32(Console.ReadLine());
-            }
-        }
-   
-        for (int row = 0; row < grades.GetLength(0); row++)
-        {
-            for (int column = 0; column < grades.GetLength(1); column++)
-            {
+
                 if (row < grades.GetLength(0) - 1)
                 {
                     sumGroupOne += grades[row, column];
@@ -31,7 +25,7 @@ class Program
                 }
             }
         }
-
+   
         Console.WriteLine($"The average of group 1 is: {sumGroupOne / grades.GetLength(1)}.");
         Console.WriteLine($"The average of group 2 is: {sumGroupTwo / grades.GetLength(1)}.");
     }

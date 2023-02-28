@@ -14,12 +14,12 @@ class Program
         int[,] gradesArray = new int[amountOfGroups, amountOfStudents];
         int[] averageArray = new int[amountOfGroups];
 
-        Console.WriteLine("Input grades into array");
         for (int row = 0; row < gradesArray.GetLength(0); row++)
         {
             int sumGroup = 0;
             for (int column = 0; column < gradesArray.GetLength(1); column++)
             {
+                Console.WriteLine("Input grades into array");
                 Console.Write($"Group {row + 1}, student {column + 1}: ");
                 gradesArray[row, column] = Convert.ToInt32(Console.ReadLine());
 

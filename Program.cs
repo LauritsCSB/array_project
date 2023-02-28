@@ -3,31 +3,36 @@ class Program
 {
     static void Main(string[] args)
     {
-        int[,] grades = new int[2, 5];
-        int sumGroupOne = 0;
-        int sumGroupTwo = 0;
+        Console.WriteLine("How many groups of students?");
+        int amountOfGroups = Convert.ToInt32(Console.ReadLine());
+        Console.Clear();
+
+        Console.WriteLine("How many students per group?");
+        int amountOfStudents = Convert.ToInt32(Console.ReadLine());
+        Console.Clear();
+
+        int[,] gradesArray = new int[amountOfGroups, amountOfStudents];
+        int[] averageArray = new int[amountOfGroups];
 
         Console.WriteLine("Input grades into array");
-        for (int row = 0; row < grades.GetLength(0); row++)
+        for (int row = 0; row < gradesArray.GetLength(0); row++)
         {
-            for (int column = 0; column < grades.GetLength(1); column++)
+            int sumGroup = 0;
+            for (int column = 0; column < gradesArray.GetLength(1); column++)
             {
                 Console.Write($"Group {row + 1}, student {column + 1}: ");
-                grades[row, column] = Convert.ToInt32(Console.ReadLine());
+                gradesArray[row, column] = Convert.ToInt32(Console.ReadLine());
 
-                if (row < grades.GetLength(0) - 1)
-                {
-                    sumGroupOne += grades[row, column];
-                }
-                else
-                {
-                    sumGroupTwo += grades[row, column];
-                }
+                sumGroup += gradesArray[row, column];
+                Console.Clear();
             }
+            averageArray[row] = sumGroup / gradesArray.GetLength(1);
         }
-   
-        Console.WriteLine($"The average of group 1 is: {sumGroupOne / grades.GetLength(1)}.");
-        Console.WriteLine($"The average of group 2 is: {sumGroupTwo / grades.GetLength(1)}.");
+
+        for (int i = 0; i < averageArray.Length; i++)
+        {
+            Console.WriteLine($"The average of group {i + 1} is: {averageArray[i]}.");
+        }
     }
 }
 
